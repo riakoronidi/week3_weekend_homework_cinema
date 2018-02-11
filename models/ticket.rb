@@ -30,24 +30,6 @@ class Ticket
     SqlRunner.run(sql,values)
   end
 
-  # def tickets_by_customer()
-  #   sql = "SELECT * FROM tickets INNER JOIN customers
-  #   ON customers.id = tickets.customer_id WHERE customer_id = $1"
-  #   values = [@customer_id]
-  #   ticket_hash = SqlRunner.run(sql,values)
-  #   return ticket_hash.count()
-  #   # tickets = ticket_hash.map{|ticket| Ticket.new(ticket)}
-  #   # return tickets.count()
-  # end
-
-  def popular_time
-    sql = "SELECT screenings.* FROM screenings INNER JOIN tickets
-    ON tickets.film_id = screenings.film_id WHERE film_id = $1"
-    values = [@film_id]
-    times = SqlRunner.run(sql,values)
-    result = times.map{|time| }
-  end
-
   def self.all()
     sql = "SELECT * FROM tickets"
     tickets = SqlRunner.run(sql)

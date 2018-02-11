@@ -40,39 +40,34 @@ ticket4.save()
 ticket5 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer1.id})
 ticket5.save()
 
-screening1 = Screening.new({'screening' => '12:00', 'film_id' => film1.id})
+screening1 = Screening.new({'screening' => '12:00', 'film_id' => film1.id, 'customer_id' => customer1.id})
 screening1.save()
-screening2 = Screening.new({'screening' => '17:00', 'film_id' => film2.id})
+screening2 = Screening.new({'screening' => '17:00', 'film_id' => film2.id, 'customer_id' => customer2.id})
 screening2.save()
-screening3 = Screening.new({'screening' => '20:00', 'film_id' => film3.id})
+screening3 = Screening.new({'screening' => '20:00', 'film_id' => film3.id, 'customer_id' => customer3.id})
 screening3.save()
-screening4 = Screening.new({'screening' => '21:30', 'film_id' => film4.id})
+screening4 = Screening.new({'screening' => '21:30', 'film_id' => film4.id, 'customer_id' => customer4.id})
 screening4.save()
-screening5 = Screening.new({'screening' => '20:00', 'film_id' => film4.id})
+screening5 = Screening.new({'screening' => '20:00', 'film_id' => film4.id, 'customer_id' => customer4.id})
 screening5.save()
-screening6 = Screening.new({'screening' => '17:00', 'film_id' => film4.id})
+screening6 = Screening.new({'screening' => '17:00', 'film_id' => film4.id, 'customer_id' => customer4.id})
 screening6.save()
-screening7 = Screening.new({'screening' => '17:00', 'film_id' => film3.id})
+screening7 = Screening.new({'screening' => '17:00', 'film_id' => film3.id, 'customer_id' => customer3.id})
 screening7.save()
+screening8 = Screening.new({'screening' => '17:00', 'film_id' => film3.id, 'customer_id' => customer4.id})
+screening8.save()
 
-
-
-
-customer2.name = "Filareti"
+customer2.name = "Dina"
 customer2.update()
 
-film2.title = "PS I love you"
+film2.title = "P.S. I love you"
 film2.update()
 
-customer1.tickets_bought_by_customer()
-customer2.tickets_bought_by_customer()
-customer3.tickets_bought_by_customer()
-customer4.tickets_bought_by_customer()
-film1.film_watched_by_customers()
-film2.film_watched_by_customers()
-film3.film_watched_by_customers()
-film4.film_watched_by_customers()
+p "#{customer1.tickets_bought_by_customer()} tickets were bought by #{customer1.name}"
 
+p "#{film4.film_watched_by_customers()} customers are going to watch film #{film4.title}"
+
+p "The most popular time for film3 is #{film3.popular_time()}"
 
 binding.pry
 nil

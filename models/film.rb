@@ -46,6 +46,20 @@ class Film
     return film_hash.count()
   end
 
+  def popular_time()
+    sql = "SELECT screenings.* FROM screenings INNER JOIN tickets
+    ON tickets.film_id = screenings.film_id WHERE tickets.film_id = $1"
+    values = [@id]
+    times = SqlRunner.run(sql,values)
+    result = times.map{|time| Screening.new(time)}
+    time_array = []
+    for element in result
+      time_array << element.screening
+    end
+    final_time = time_array.find_all{|time| time_array.count(time)>1}
+    return final_time.first
+  end
+
   def self.all()
     sql = "SELECT * FROM films"
     films = SqlRunner.run(sql)
